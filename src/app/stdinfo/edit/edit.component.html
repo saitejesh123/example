@@ -1,0 +1,103 @@
+<div class="container">
+    <h1>Update Student</h1>
+   
+    <a href="#" routerLink="/stdinfo/index" class="btn btn-primary">Back</a>
+          
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    
+        
+        <div class="form-group">
+            <label for="stdname">Name:</label>
+            <input 
+                formControlName="stdname"
+                id="stdname" 
+                type="text" 
+                [(ngModel)]="stdinfo.stdname"
+                class="form-control"/>
+            <div *ngIf="f['stdname'].touched && f['stdname'].invalid" class="alert alert-danger">
+                <div *ngIf="f['stdname'].errors && f['stdname'].errors['required']">Name is required.</div>
+            </div>
+        </div>
+           
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input 
+                formControlName="address"
+                id="address" 
+                type="text" 
+                [(ngModel)]="stdinfo.address"
+                class="form-control"/>
+            <div *ngIf="f['address'].touched && f['address'].invalid" class="alert alert-danger">
+                <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phoneno">Phone Number:</label>
+            <input 
+                formControlName="phoneno"
+                id="phoneno" 
+                type="text" 
+                [(ngModel)]="stdinfo.phoneno"
+                class="form-control"/>
+            <div *ngIf="f['phoneno'].touched && f['phoneno'].invalid" class="alert alert-danger">
+                <div *ngIf="f['phoneno'].errors && f['phoneno'].errors['required']">Phone number is required.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+                formControlName="email"
+                id="email" 
+                type="email" 
+                [(ngModel)]="stdinfo.email"
+                class="form-control"/>
+            <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+                formControlName="password"
+                id="password" 
+                type="password" 
+                [(ngModel)]="stdinfo.password"
+                class="form-control"/>
+            <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
+                <div *ngIf="f['password'].errors && f['password'].errors['minlength']">Password must be at least 6 characters.</div>
+            </div>
+        </div>
+            
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input 
+                formControlName="confirm_password"
+                id="confirm_password" 
+                type="password" 
+                [(ngModel)]="stdinfo.confirm_password"
+                class="form-control"/>
+            <div *ngIf="f['confirm_password'].touched && f['confirm_password'].invalid" class="alert alert-danger">
+                <div *ngIf="f['confirm_password'].errors && f['confirm_password'].errors['required']">Confirm Password is required.</div>
+                <div *ngIf="form.hasError('passwordMismatch')">Passwords do not match.</div>
+            </div>
+        </div>
+            
+        <div class="form-group">
+            <label for="usertype">User Type</label>
+            <select formControlName="usertype" id="usertype" [(ngModel)]="stdinfo.usertype" class="form-control"/>
+                <option value="">Select User Type</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <div *ngIf="f['usertype'].touched && f['usertype'].invalid" class="alert alert-danger">
+                <div *ngIf="f['usertype'].errors && f['usertype'].errors['required']">User Type is required.</div>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>
